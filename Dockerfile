@@ -1,11 +1,5 @@
-FROM maven:3.5-jdk-8
-
-EXPOSE 8083
-
-VOLUME ["/deploy/application"]
-
-WORKDIR /deploy/application
-
-ADD . .
-
-CMD mvn spring-boot:run
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ARG JAR_FILE
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar", "/app.jar"]
