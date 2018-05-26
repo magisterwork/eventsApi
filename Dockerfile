@@ -1,6 +1,6 @@
 FROM maven:3.5-jdk-8
 
-RUN mkdir -p /deploy/application
+EXPOSE 8083
 
 VOLUME ["/deploy/application"]
 
@@ -8,4 +8,4 @@ WORKDIR /deploy/application
 
 ADD . .
 
-ENTRYPOINT ["mvn","clean","package"]
+CMD mvn spring-boot:run
